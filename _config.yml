@@ -18,7 +18,7 @@ minimal_mistakes_skin    : "air" # "default" "air", "aqua", "contrast", "dark", 
 locale                   : "ko-KR"
 title                    : "Kang's AI Study"
 title_separator          : "AI 전문가로 성장하기"
-subtitle                 : # site tagline that appears below site title in masthead
+subtitle                 : "데이터와 인공지능을 학습하는 기획자 노트" # site tagline that appears below site title in masthead
 name                     : "강필도(Kang Pildo)"
 description              : "매일 반복하는 공부 습관"
 url                      : "https://Kangpildo.github.io"
