@@ -105,14 +105,14 @@ analytics:
 # Site Author
 author:
   name             : "강필도(Dopory)"
-  avatar           : "/_image/profile/2017me.jpg"
+  avatar           : "/_image/profile/2017me.JPG"
   bio              : "기획자에서 AI 전문가로 성장하기!! <br> If you want to be happy, don't lean on others"
   location         : "Republic of Korea"
   email            :
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      url: "kafito112@gmail.com"
+      url: mailto:kafito112@gmail.com
     - label: "Website"
       icon: "fas fa-fw fa-link"
       # url: "https://your-website.com"
@@ -140,7 +140,7 @@ footer:
       # url:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url:
+      url: "https://kangpildo.github.io/"
     - label: "GitLab"
       icon: "fab fa-fw fa-gitlab"
       # url:
