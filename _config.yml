@@ -259,7 +259,7 @@ tag_archive:
   path: /tags/
 tag_archive:
   type: liquid
-  path: /CBNU-AI-EX/
+  path: /CBNUAIEX/
 # https://github.com/jekyll/jekyll-archives
 # jekyll-archives:
 #   enabled:
