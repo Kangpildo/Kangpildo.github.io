@@ -3,7 +3,7 @@ main:
   - title: "search"
     url: /_layouts/
   - title: "Category"
-    url: _layouts/category-archive.md
+    url: /_layouts/category-archive.md
   - title: "Tag"
     url: /_layouts/
   - title: "year"
