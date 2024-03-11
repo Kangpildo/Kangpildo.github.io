@@ -1,9 +1,11 @@
 # main links
 main:
+  - title: "search"
+    url: /_layouts/search.html/
   - title: "Category"
-    url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
+    url: /_layouts/categories.html/
   - title: "Tag"
-    url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
+    url: /_layouts/tags.html/  
   - title: "year"
     url: /year-archive/
 
