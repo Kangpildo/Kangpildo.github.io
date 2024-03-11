@@ -1,11 +1,11 @@
 # main links
 main:
   - title: "search"
-    url: /_layouts/search.html/
+    url: /_layouts/
   - title: "Category"
-    url: /_layouts/categories.html/
+    url: /_layouts/
   - title: "Tag"
-    url: /_layouts/tags.html/  
+    url: /_layouts/
   - title: "year"
     url: /year-archive/
 
