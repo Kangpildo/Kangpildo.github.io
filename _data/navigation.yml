@@ -4,6 +4,8 @@ main:
     url: /categories/
   - title: "Tag"
     url: /tags/
+  - title: "CBNU_AI-Ex"
+    url: /_layouts/
   - title: "About"
     url: /about/
   
