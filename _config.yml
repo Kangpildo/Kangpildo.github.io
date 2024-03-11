@@ -257,6 +257,9 @@ category_archive:
 tag_archive:
   type: liquid
   path: /tags/
+tag_archive:
+  type: liquid
+  path: /CBNU-AI-EX/
 # https://github.com/jekyll/jekyll-archives
 # jekyll-archives:
 #   enabled:
