@@ -55,12 +55,10 @@ from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 #----------학습데이터 로드----------
-print('----------학습데이터 로드----------')
 data = pd.read_csv('spam_kr.csv', encoding='euc-kr')
 print('총 샘플의 수 :',len(data))
 
 #----------데이터 전처리----------
-print('----------데이터 전처리----------')
 del data['v3']
 del data['v4']
 data['v1'] = data['v1'].replace(['ham','spam'],[0,1])
@@ -74,7 +72,6 @@ y_data = data['v1']
 # data['v1'].value_counts().plot(kind='bar')
 
 #----------데이터 확인----------
-print('----------데이터 확인----------')
 print('정상 메일과 스팸 메일의 개수')
 print(data.groupby('v1').size().reset_index(name='count'))
 print(f'정상 메일의 비율 = {round(data["v1"].value_counts()[0]/len(data) * 100,3)}%')
@@ -83,7 +80,6 @@ print('메일 본문의 개수: {}'.format(len(X_data)))
 print('레이블의 개수: {}'.format(len(y_data)))
 
 #훈련 데이터와 테스트 데이터 분리
-print('----------훈련 데이터와 테스트 데이터 분리 및 확인----------')
 X_train, X_test, y_train, y_test = train_test_split(X_data, y_data, test_size=0.3, random_state=0, stratify=y_data)
 
 print('**훈련 데이터의 비율')
@@ -95,7 +91,6 @@ print(f'정상 메일 = {round(y_test.value_counts()[0]/len(y_test) * 100,3)}%')
 print(f'스팸 메일 = {round(y_test.value_counts()[1]/len(y_test) * 100,3)}%')
 
 #케라스 토크나이저를 통해 훈련 데이터에 대한 토큰화 및 정수 인코딩 
-print('----------훈련 데이터 토큰화 및 정수 인코딩----------')
 tokenizer = Tokenizer()
 tokenizer.fit_on_texts(X_train)
 X_train_encoded = tokenizer.texts_to_sequences(X_train)
