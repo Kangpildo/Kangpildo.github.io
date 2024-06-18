@@ -4,8 +4,8 @@ main:
     url: /categories/
   - title: "Tag"
     url: /tags/
-  - title: "CBNU-AI-Ex"
-    url: /categories/CBNU-AI-EX/
+  #- title: "CBNU-AI-Ex"
+  #  url: /categories/CBNU-AI-EX/
   - title: "About"
     url: /about/
   
