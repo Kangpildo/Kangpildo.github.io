@@ -1,3 +1,13 @@
+---
+categories:
+  - CBNU-AI-EX
+  - 24년1학기  
+tags:
+  - Blog
+  - CBNU
+  - AI
+---
+
 # 스팸 메일 분류 모델 프로젝트
 
 ## 개요
