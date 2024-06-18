@@ -8,13 +8,15 @@ tags:
   - AI
 ---
 
-# Rule-based System 프로젝트 with Durable Rules
+# Rule-based System을 학습해보자(with Durable Rules)
 
 ## 개요
 
+Rule-based System을 통해 규칙을 학습하기 위해 회사의 제품군들을 분류할수 있는 규칙을 정의하고 관리하기 위해 
+
 이 프로젝트는 심스리얼리티의 제품 규칙을 관리하기 위해 Rule-based System을 만드는 것입니다. Durable Rules 라이브러리를 사용하여 다양한 제품 환경, 장비, 서비스 등에 대한 규칙을 정의하고 구현했습니다.
 
-### 목표
+### 학습 프로세스 및 목표
 - 심스리얼리티의 6종 제품군에 대한 규칙 정의
 - Durable Rules를 사용하여 규칙 구현
 - 예제 사실을 통해 규칙 기반 시스템 시연
