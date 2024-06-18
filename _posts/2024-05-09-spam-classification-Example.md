@@ -87,7 +87,7 @@ model.fit(x_train, y_train, epochs=10, batch_size=32, validation_split=0.2)
 y_pred = model.predict_classes(x_test)
 accuracy = accuracy_score(y_test, y_pred)
 print(f'테스트 정확도: {accuracy}')
-
+```
 ## 성능
 총 샘플 수: 122
 정확도: 0.7297
