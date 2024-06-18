@@ -1,8 +1,6 @@
 ---
 categories:
-  - CBNU-AI-EX
-  - AI
-  - 산업인공지능
+  - CBNU-AI-EX   
 tags:
   - Blog
   - CBNU
