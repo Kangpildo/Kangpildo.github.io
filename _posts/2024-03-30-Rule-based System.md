@@ -1,3 +1,17 @@
+---
+title:  "카테고리 및 태그 테스트 샘플 포스트 1"
+excerpt: "카테고리 및 태그 테스트 샘플 포스트 입니다."
+
+categories:
+  - CBNU-AI-EX
+  - AI
+  - 산업인공지능
+tags:
+  - Blog
+  - CBNU
+  - AI
+last_modified_at: 2024-03-11T08:06:00-05:00
+---
 
 # Rule-based System 프로젝트 with Durable Rules
 
