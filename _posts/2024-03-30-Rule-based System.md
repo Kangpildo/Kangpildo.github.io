@@ -5,7 +5,6 @@ tags:
   - Blog
   - CBNU
   - AI
-last_modified_at: 2024-03-11T08:06:00-05:00
 ---
 
 # Rule-based System 프로젝트 with Durable Rules
