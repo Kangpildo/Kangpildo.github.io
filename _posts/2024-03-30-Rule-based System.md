@@ -1,6 +1,7 @@
 ---
 categories:
-  - CBNU-AI-EX   
+  - CBNU-AI-EX
+  - 24년1학기  
 tags:
   - Blog
   - CBNU
