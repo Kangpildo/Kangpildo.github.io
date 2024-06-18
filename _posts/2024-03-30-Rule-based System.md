@@ -1,7 +1,4 @@
 ---
-title:  "카테고리 및 태그 테스트 샘플 포스트 1"
-excerpt: "카테고리 및 태그 테스트 샘플 포스트 입니다."
-
 categories:
   - CBNU-AI-EX
   - AI
