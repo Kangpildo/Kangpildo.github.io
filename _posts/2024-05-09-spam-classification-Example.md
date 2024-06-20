@@ -29,7 +29,7 @@ tags:
 - **구현**: 바닐라 RNN (1:1 RNN)
 
 ## 학습 과정
-1. **데이터 파악**
+### 1. **데이터 파악**
 - 한글 스팸 데이터 생성 및 로드
 ```python
 import numpy as np
@@ -55,7 +55,7 @@ print(f'스팸 메일의 비율 = {round(data["v1"].value_counts()[1]/len(data) 
 print('메일 본문의 개수: {}'.format(len(X_data)))
 print('레이블의 개수: {}'.format(len(y_data)))
 ```  
-2. **데이터 전처리**
+### 2. **데이터 전처리**
 - 불필요한 컬럼 삭제 및 중복 데이터 제거
 ```python
 del data['v3']
@@ -70,7 +70,7 @@ X_data = data['v2']
 y_data = data['v1']
 # data['v1'].value_counts().plot(kind='bar')
 ```
-&nbsp;&nbsp;- 학습 데이터와 테스트 데이터 분리
+- 학습 데이터와 테스트 데이터 분리
 ```python
 #훈련 데이터와 테스트 데이터 분리
 X_train, X_test, y_train, y_test = train_test_split(X_data, y_data, test_size=0.3, random_state=0, stratify=y_data)
@@ -93,7 +93,7 @@ X_train_encoded = tokenizer.texts_to_sequences(X_train)
 word_to_index = tokenizer.word_index
 print(word_to_index)
 ```
-3. **모델 학습 및 평가**
+### 3. **모델 학습 및 평가**
 - 바닐라 RNN 모델을 사용하여 학습 및 평가
 
 ### Full 코드
