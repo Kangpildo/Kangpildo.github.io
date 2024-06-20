@@ -30,7 +30,7 @@ tags:
 
 ## 학습 과정
 ### 1. **데이터 파악**
-- 한글 스팸 데이터 생성 및 로드
+- 한글 스팸 데이터 생성 및 로드  
 ```python
 import numpy as np
 import pandas as pd
@@ -44,8 +44,9 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 #----------학습데이터 로드----------
 data = pd.read_csv('spam_kr.csv', encoding='euc-kr')
 print('총 샘플의 수 :',len(data))
-```  
-- 총 데이터 수 및 데이터 확인
+```
+
+- 총 데이터 수 및 데이터 확인  
 ```python
 #----------데이터 확인----------
 print('정상 메일과 스팸 메일의 개수')
@@ -54,9 +55,10 @@ print(f'정상 메일의 비율 = {round(data["v1"].value_counts()[0]/len(data) 
 print(f'스팸 메일의 비율 = {round(data["v1"].value_counts()[1]/len(data) * 100,3)}%')
 print('메일 본문의 개수: {}'.format(len(X_data)))
 print('레이블의 개수: {}'.format(len(y_data)))
-```  
+```
+
 ### 2. **데이터 전처리**
-- 불필요한 컬럼 삭제 및 중복 데이터 제거
+- 불필요한 컬럼 삭제 및 중복 데이터 제거  
 ```python
 del data['v3']
 del data['v4']
@@ -70,7 +72,8 @@ X_data = data['v2']
 y_data = data['v1']
 # data['v1'].value_counts().plot(kind='bar')
 ```
-- 학습 데이터와 테스트 데이터 분리
+
+- 학습 데이터와 테스트 데이터 분리  
 ```python
 #훈련 데이터와 테스트 데이터 분리
 X_train, X_test, y_train, y_test = train_test_split(X_data, y_data, test_size=0.3, random_state=0, stratify=y_data)
@@ -83,7 +86,8 @@ print('**테스트 데이터의 비율')
 print(f'정상 메일 = {round(y_test.value_counts()[0]/len(y_test) * 100,3)}%')
 print(f'스팸 메일 = {round(y_test.value_counts()[1]/len(y_test) * 100,3)}%')
 ```
-- 토큰화 및 정수 인코딩
+
+- 토큰화 및 정수 인코딩  
 ```python
 #케라스 토크나이저를 통해 훈련 데이터에 대한 토큰화 및 정수 인코딩 
 tokenizer = Tokenizer()
@@ -92,7 +96,7 @@ X_train_encoded = tokenizer.texts_to_sequences(X_train)
 # print(X_train_encoded[:5])
 word_to_index = tokenizer.word_index
 print(word_to_index)
-```
+```  
 ### 3. **모델 학습 및 평가**
 - 바닐라 RNN 모델을 사용하여 학습 및 평가
 
@@ -208,7 +212,7 @@ plt.ylabel('loss')
 plt.xlabel('epoch')
 plt.legend(['train', 'val'], loc='upper left')
 plt.show()
-```
+```  
 ## 성능
 총 샘플 수: 122  
 정확도: 0.7297
