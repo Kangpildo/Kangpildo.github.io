@@ -8,7 +8,7 @@ tags:
   - AI
 ---
 
-# Rule-based System을 학습해보자(with Durable Rules)
+# Rule-based System을 활용해 분류기 모델을 만들어 보자(with Durable Rules)
 
 ## 개요
 Rule-based System을 통해 규칙 모델을 학습하기 위해 내가 근무하는 회사의 제품군들에 대해 분류 규칙을 적용하여 추후 타 업체와의 미팅 시 관련 제품군과 개발 환경 등에 대한 정보들을 빠르게 찾을수 있는 환경을 만들어 보면 좋겠다는 생각에 겸사 겸사 학습을 진행해보았음
