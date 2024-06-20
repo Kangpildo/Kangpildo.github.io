@@ -22,7 +22,7 @@ tags:
 ## 데이터 설명
 - **데이터 수집**: 사내 메일 및 외부 메일에서 스팸 메일 관련 데이터 수집 (총 122개 샘플)
 - **데이터 구성**: 텍스트 형태의 메일 내용과 레이블 (스팸/정상)
-![한글 스팸 데이터 예시](../assets/image/spam-classification-Example-image1.png)
+![한글 스팸 데이터 예시](../assets/images/spam-classification-Example-image1.png)
 
 ## 사용 모델
 - **모델**: 순환 신경망(RNN) 모델
@@ -55,17 +55,48 @@ print(f'스팸 메일의 비율 = {round(data["v1"].value_counts()[1]/len(data) 
 print('메일 본문의 개수: {}'.format(len(X_data)))
 print('레이블의 개수: {}'.format(len(y_data)))
 ```
-
 2. **데이터 전처리**
-   - 불필요한 컬럼 삭제
-   - 중복 데이터 제거
-   - 학습 데이터와 테스트 데이터 분리
-   - 토큰화 및 정수 인코딩
+  - 불필요한 컬럼 삭제 및 중복 데이터 제거
+```python
+del data['v3']
+del data['v4']
+data['v1'] = data['v1'].replace(['ham','spam'],[0,1])
+print('총 샘플의 수 :',len(data))
+# data.info()
+print('결측값 여부 :',data.isnull().values.any())
+print('v2열의 유니크한 값 :',data['v2'].nunique())
+data.drop_duplicates(subset=['v2'], inplace=True) #v2열 중복 제거
+X_data = data['v2']
+y_data = data['v1']
+# data['v1'].value_counts().plot(kind='bar')
+```
+  - 학습 데이터와 테스트 데이터 분리
+```python
+#훈련 데이터와 테스트 데이터 분리
+X_train, X_test, y_train, y_test = train_test_split(X_data, y_data, test_size=0.3, random_state=0, stratify=y_data)
 
+print('**훈련 데이터의 비율')
+print(f'정상 메일 = {round(y_train.value_counts()[0]/len(y_train) * 100,3)}%')
+print(f'스팸 메일 = {round(y_train.value_counts()[1]/len(y_train) * 100,3)}%')
+
+print('**테스트 데이터의 비율')
+print(f'정상 메일 = {round(y_test.value_counts()[0]/len(y_test) * 100,3)}%')
+print(f'스팸 메일 = {round(y_test.value_counts()[1]/len(y_test) * 100,3)}%')
+```
+  - 토큰화 및 정수 인코딩
+```python
+#케라스 토크나이저를 통해 훈련 데이터에 대한 토큰화 및 정수 인코딩 
+tokenizer = Tokenizer()
+tokenizer.fit_on_texts(X_train)
+X_train_encoded = tokenizer.texts_to_sequences(X_train)
+# print(X_train_encoded[:5])
+word_to_index = tokenizer.word_index
+print(word_to_index)
+```
 3. **모델 학습 및 평가**
    - 바닐라 RNN 모델을 사용하여 학습 및 평가
 
-### 코드 예시
+### Full 코드
 ```python
 import numpy as np
 import pandas as pd
@@ -76,11 +107,9 @@ from sklearn.model_selection import train_test_split
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
-#----------학습데이터 로드----------
 data = pd.read_csv('spam_kr.csv', encoding='euc-kr')
 print('총 샘플의 수 :',len(data))
 
-#----------데이터 전처리----------
 del data['v3']
 del data['v4']
 data['v1'] = data['v1'].replace(['ham','spam'],[0,1])
@@ -93,7 +122,6 @@ X_data = data['v2']
 y_data = data['v1']
 # data['v1'].value_counts().plot(kind='bar')
 
-#----------데이터 확인----------
 print('정상 메일과 스팸 메일의 개수')
 print(data.groupby('v1').size().reset_index(name='count'))
 print(f'정상 메일의 비율 = {round(data["v1"].value_counts()[0]/len(data) * 100,3)}%')
@@ -184,8 +212,9 @@ plt.show()
 ## 성능
 총 샘플 수: 122
 정확도: 0.7297
+![학습결과](../assets/images/spam-classification-Example-image2.png)
 
 ## 느낀 점
-이 프로젝트를 통해 데이터 전처리의 중요성을 깨달았습니다. 특히, 한글 데이터의 전처리 과정에서 불용어 제거와 특수 문자 처리의 필요성을 느꼈습니다. 또한, 모델의 성능을 향상시키기 위해 더 많은 데이터를 수집하고, 다양한 전처리 방법을 적용해야 한다는 것을 배웠습니다.
-
-이 프로젝트는 인공지능 모델의 학습 과정을 이해하는 데 큰 도움이 되었으며, 앞으로 더 나은 성능을 내기 위한 방법을 고민하게 되었습니다. 인공지능을 처음 배우는 입장에서 이러한 프로젝트는 매우 유익하고 보람찬 경험이었습니다.
+한글로 된 스팸 데이터를 활용하면 학습의 성능이 좋지 않을것이라는 것을 알고 시작했으나, 역시나 좋은 학습이 이루어 지지는 않았음.
+하지만 이번 학습을 통해 데이터 전처리의 중요성에 대해서 한번더 생각하게 되었음.
+그런데, 데이터의 양이 적어서 그런것일수도 있을까? 다음에 한글 스팸 데이터의 양과 질(다양한 문장들)을 다량으로 수집하여 한번더 시도해봐야겠다.
