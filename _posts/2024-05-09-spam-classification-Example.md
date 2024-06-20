@@ -30,7 +30,7 @@ tags:
 
 ## 학습 과정
 1. **데이터 파악**
-   - 한글 스팸 데이터 생성 및 로드
+  - 한글 스팸 데이터 생성 및 로드
 ```python
 import numpy as np
 import pandas as pd
@@ -45,7 +45,7 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 data = pd.read_csv('spam_kr.csv', encoding='euc-kr')
 print('총 샘플의 수 :',len(data))
 ```
-   - 총 데이터 수 및 데이터 확인
+  - 총 데이터 수 및 데이터 확인
 ```python
 #----------데이터 확인----------
 print('정상 메일과 스팸 메일의 개수')
