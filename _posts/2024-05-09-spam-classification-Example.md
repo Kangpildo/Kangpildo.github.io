@@ -30,7 +30,7 @@ tags:
 
 ## 학습 과정
 1. **데이터 파악**
-- 한글 스팸 데이터 생성 및 로드
+ - 한글 스팸 데이터 생성 및 로드
 ```python
 import numpy as np
 import pandas as pd
