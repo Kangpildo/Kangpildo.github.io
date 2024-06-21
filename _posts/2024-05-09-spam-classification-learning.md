@@ -54,7 +54,7 @@ print('메일 본문의 개수: {}'.format(len(X_data)))
 print('레이블의 개수: {}'.format(len(y_data)))
 ```
 
-### 2-1. **데이터 전처리**
+### 2. **데이터 전처리**
 - 불필요한 컬럼 삭제 및 중복 데이터 제거, 학습 데이터 및 테스트 데이터 분리
 ```python
 del data['v3']
@@ -80,7 +80,7 @@ print('**테스트 데이터의 비율')
 print(f'정상 메일 = {round(y_test.value_counts()[0]/len(y_test) * 100,3)}%')
 print(f'스팸 메일 = {round(y_test.value_counts()[1]/len(y_test) * 100,3)}%')
 ```
-### 2-2. **데이터 전처리**
+### 3. **데이터 전처리**
 - 토큰화 및 정수 인코딩
 ```python
 #케라스 토크나이저를 통해 훈련 데이터에 대한 토큰화 및 정수 인코딩 
@@ -92,7 +92,7 @@ word_to_index = tokenizer.word_index
 print(word_to_index)
 ```
   
-### 3. **모델 학습 및 평가**
+## **모델 학습 및 평가**
 - 바닐라 RNN 모델을 사용하여 학습 및 평가
 - Full 코드
 ```python
