@@ -212,7 +212,7 @@ plt.show()
 ## 성능
 총 샘플 수: 122  
 정확도: 0.7297
-![학습결과](../assets/images/spam-classification-Example-image2.png)
+<img src="https://Kangpildo.github.io/assets/images/spam-classification-Example-image2.png" alt="학습결과">
 
 ## 느낀 점
 한글로 된 스팸 데이터를 활용하면 학습의 성능이 좋지 않을것이라는 것을 알고 시작했으나, 역시나 좋은 학습이 이루어 지지는 않았음.  
