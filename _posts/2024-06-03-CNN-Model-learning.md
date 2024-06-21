@@ -25,7 +25,7 @@ tags:
 - 특징 벡터: 512개의 특징 값을 32개의 값으로 줄임.
 - 완전 연결 레이어: 32개의 값을 3개의 클래스에 대한 확률로 줄임. Softmax 활성화 함수를 사용.
 - 다만, Top-layer층은 기존의 VGG-16의 1,000 클래스에 대한 분류를 사용하지 않고 내가 분류하고자 하는 3개의 클래스 층을 추가하여 사용하였음
-<img src="https://Kangpildo.github.io/assets/images/CNN-Model-Example-image1.png" alt="CNN 모델 구조">
+<img src="https://Kangpildo.github.io/assets/images/CNN-Model-Example-image2.png" alt="CNN 모델 구조">
 
 ## 학습 과정
 
