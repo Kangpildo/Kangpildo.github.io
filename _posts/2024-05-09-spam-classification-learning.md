@@ -22,7 +22,7 @@ tags:
 ## 데이터 설명
 - **데이터 수집**: 사내 메일 및 외부 메일에서 스팸 메일 관련 데이터 수집 (총 122개 샘플)
 - **데이터 구성**: 텍스트 형태의 메일 내용과 레이블 (스팸/정상)
-![한글 스팸 데이터 예시](../assets/images/spam-classification-Example-image1.png)
+<img src="https://Kangpildo.github.io/assets/images/spam-classification-Example-image1.png" alt="한글 스팸 데이터 예시">
 
 ## 사용 모델
 - **모델**: 순환 신경망(RNN) 모델
