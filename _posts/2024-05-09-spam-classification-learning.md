@@ -41,11 +41,11 @@ from sklearn.model_selection import train_test_split
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
-#----------학습데이터 로드----------
+#학습데이터 로드
 data = pd.read_csv('spam_kr.csv', encoding='euc-kr')
 print('총 샘플의 수 :',len(data))
 
-#----------데이터 확인----------
+#데이터 확인
 print('정상 메일과 스팸 메일의 개수')
 print(data.groupby('v1').size().reset_index(name='count'))
 print(f'정상 메일의 비율 = {round(data["v1"].value_counts()[0]/len(data) * 100,3)}%')
