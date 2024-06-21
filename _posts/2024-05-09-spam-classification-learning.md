@@ -31,6 +31,7 @@ tags:
 ## 학습 과정
 ### 1. **데이터 로드 및 확인**
 - 한글 스팸 데이터 로드 및 확인
+
 ```python
 import numpy as np
 import pandas as pd
