@@ -29,9 +29,9 @@ tags:
 - **구현**: 바닐라 RNN (1:1 RNN)
 
 ## 학습 과정
-### 1. **데이터 로드 및 확인**
+### 데이터 로드 및 확인
 - 한글 스팸 데이터 로드 및 확인  
-```
+```python
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -54,9 +54,9 @@ print('메일 본문의 개수: {}'.format(len(X_data)))
 print('레이블의 개수: {}'.format(len(y_data)))
 ```
 
-### 2. **데이터 전처리**
+### 데이터 전처리 : 데이터 정규화
 - 불필요한 컬럼 삭제 및 중복 데이터 제거, 학습 데이터 및 테스트 데이터 분리  
-```
+```python
 del data['v3']
 del data['v4']
 data['v1'] = data['v1'].replace(['ham','spam'],[0,1])
@@ -81,7 +81,7 @@ print(f'정상 메일 = {round(y_test.value_counts()[0]/len(y_test) * 100,3)}%')
 print(f'스팸 메일 = {round(y_test.value_counts()[1]/len(y_test) * 100,3)}%')
 ```
 
-### 3. **데이터 전처리**
+### 데이터 전처리 : 데이터 토큰화
 - 토큰화 및 정수 인코딩
 ```
 #케라스 토크나이저를 통해 훈련 데이터에 대한 토큰화 및 정수 인코딩 
@@ -93,10 +93,10 @@ word_to_index = tokenizer.word_index
 print(word_to_index)
 ```
   
-## **모델 학습 및 평가**
+## 모델 학습 및 평가
 - 바닐라 RNN 모델을 사용하여 학습 및 평가
 - Full 코드
-```
+```python
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
