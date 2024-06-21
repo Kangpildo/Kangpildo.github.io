@@ -51,7 +51,8 @@ print('메일 본문의 개수: {}'.format(len(X_data)))
 print('레이블의 개수: {}'.format(len(y_data)))
 ```
 
-### 2. **데이터 전처리#1** (불필요한 컬럼 삭제 및 중복 데이터 제거)
+### 2. **데이터 전처리#1**
+불필요한 컬럼 삭제 및 중복 데이터 제거
 ```python
 del data['v3']
 del data['v4']
@@ -66,7 +67,8 @@ y_data = data['v1']
 # data['v1'].value_counts().plot(kind='bar')
 ```
 
-### 3. **데이터 전처리#2** (학습 데이터와 테스트 데이터 분리)
+### 3. **데이터 전처리#2**
+학습 데이터와 테스트 데이터 분리
 ```python
 X_train, X_test, y_train, y_test = train_test_split(X_data, y_data, test_size=0.3, random_state=0, stratify=y_data)
 
@@ -79,7 +81,8 @@ print(f'정상 메일 = {round(y_test.value_counts()[0]/len(y_test) * 100,3)}%')
 print(f'스팸 메일 = {round(y_test.value_counts()[1]/len(y_test) * 100,3)}%')
 ```
 
-### 4. **데이터 전처리#3** (토큰화 및 정수 인코딩)
+### 4. **데이터 전처리#3**
+토큰화 및 정수 인코딩
 ```python
 tokenizer = Tokenizer()
 tokenizer.fit_on_texts(X_train)
