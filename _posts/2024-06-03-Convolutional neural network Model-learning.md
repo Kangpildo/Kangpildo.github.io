@@ -78,7 +78,7 @@ def model_maker():
 model_final = model_maker()
 model_final.summary()
 ```
-<img src="https://Kangpildo.github.io/assets/images/CNN-Model-Example-image3.png" alt="CNN 모델 구조">
+<img src="https://Kangpildo.github.io/assets/images/CNN-Model-Example-image2.png" alt="CNN 모델 구조">
 
 ### 4. 모델 학습
 ##모델 컴파일과 학습을 진행함##
@@ -113,7 +113,7 @@ plt.ylabel('accuracy')
 plt.legend(['train','val'])
 plt.show()
 ```
-<img src="https://Kangpildo.github.io/assets/images/CNN-Model-Example-image4.png" alt="모델 학습 결과">
+<img src="https://Kangpildo.github.io/assets/images/CNN-Model-Example-image3.png" alt="모델 학습 결과">
 
 ### 5. 모델 성능 평가
 train, validation과 동일한 방식으로 test set을 불러와서 모델의 성능 평가를 실시함
@@ -129,7 +129,8 @@ test_generator = val_datagen.flow_from_directory(
 
 model_final.evaluate(test_generator, steps=60 // BATCH_SIZE)
 ```
-<img src="https://Kangpildo.github.io/assets/images/CNN-Model-Example-image5.png" alt="모델 성능 평가 결과">
+<img src="https://Kangpildo.github.io/assets/images/CNN-Model-Example-image5.png" alt="모델 성능 평가 결과1">
+<img src="https://Kangpildo.github.io/assets/images/CNN-Model-Example-image4.png" alt="모델 성능 평가 결과2">
 
 
 
