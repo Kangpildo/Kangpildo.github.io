@@ -28,6 +28,109 @@ tags:
 <img src="https://Kangpildo.github.io/assets/images/CNN-Model-Example-image2.png" alt="CNN 모델 구조">
 
 ## 학습 과정
+기존 VGG16모델을 사용하되, 추가로 몇 개의 레이어를 더 쌓고 새로운 데이터로 모델을 학습
+### 1. 라이브러리, 데이터 불러오기
+```python
+import tensorflow as tf
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from tensorflow.keras.preprocessing import image
+from tensorflow.keras.models import Model
+from tensorflow.keras.layers import Input, Flatten, Dense, GlobalAveragePooling2D
+from tensorflow.keras.applications.vgg16 import VGG16, preprocess_input
+import math
+import numpy as np
+
+TRAIN_DATA_DIR = '/content/gdrive/MyDrive/data_people/train'
+VALIDATION_DATA_DIR = '/content/gdrive/MyDrive/data_people/validation'
+TEST_DATA_DIR = '/content/gdrive/MyDrive/data_people/test'
+```
+### 2. 데이터 생성
+ImageDataGenerator를 이용해서 학습용 이미지를 추가로 더 생성  
+학습 데이터가 많지 않은 경우 과적합 가능성이 높아지는데, 원본 이미지를 변형하여 새로운 이미지를 생성하는 data augmentation을 실시하였음  
+단, validation 이미지는 정규화만 실시하고 데이터 augmentaion은 실시하지 않았음
+```python
+train_datagen = ImageDataGenerator(preprocessing_function=preprocess_input,
+                                   rotation_range=20,
+                                   width_shift_range=0.2,
+                                   height_shift_range=0.2,
+                                   zoom_range=0.2)
+
+val_datagen = ImageDataGenerator(preprocessing_function=preprocess_input)
+```
+### 3. 모델의 정의
+VGG16 모델을 불러오고, include_top=False로 설정하고, 내가 분류하고자 하는 인물 3인에 대한 클래스를 정의함.  
+라인 5,6에서 기본 모델에 포함되어 있는 레이어는 학습을 진행하지 않도록 설정하였음
+```python
+def model_maker():
+    base_model = VGG16(include_top=False, input_shape=(IMG_WIDTH, IMG_HEIGHT, 3))
+    print(len(base_model.layers))
+
+    for layer in base_model.layers[:]:
+        layer.trainable = False
+
+    input = Input(shape=(IMG_WIDTH, IMG_HEIGHT, 3))
+    custom_model = base_model(input)
+    custom_model = GlobalAveragePooling2D()(custom_model)
+    custom_model = Dense(32, activation='relu')(custom_model)
+    predictions = Dense(NUM_CLASSES, activation='softmax')(custom_model)
+
+    return Model(inputs=input, outputs=predictions)
+model_final = model_maker()
+model_final.summary()
+```
+<img src="https://Kangpildo.github.io/assets/images/CNN-Model-Example-image3.png" alt="CNN 모델 구조">
+
+### 4. 모델 학습
+##모델 컴파일과 학습을 진행함##
+```python
+model_final.compile(loss='categorical_crossentropy',
+              optimizer=tf.keras.optimizers.Adam(0.001),
+              metrics=['acc'])
+
+history = model_final.fit(
+    train_generator, steps_per_epoch=TRAIN_SAMPLES // BATCH_SIZE, # number of updates
+    epochs=10,
+    validation_data=validation_generator,
+    validation_steps=VALIDATION_SAMPLES // BATCH_SIZE)
+```
+##Validation 손실함수 확인##
+```python
+import matplotlib.pyplot as plt
+plt.plot(history.history['loss'])
+plt.plot(history.history['val_loss'])
+plt.xlabel('epoch')
+plt.ylabel('loss')
+plt.legend(['train','val'])
+plt.show()
+```
+##정확도 확인##
+```python
+import matplotlib.pyplot as plt
+plt.plot(history.history['acc'])
+plt.plot(history.history['val_acc'])
+plt.xlabel('epoch')
+plt.ylabel('accuracy')
+plt.legend(['train','val'])
+plt.show()
+```
+<img src="https://Kangpildo.github.io/assets/images/CNN-Model-Example-image4.png" alt="모델 학습 결과">
+
+### 5. 모델 성능 평가
+train, validation과 동일한 방식으로 test set을 불러와서 모델의 성능 평가를 실시함
+```python
+test_datagen = ImageDataGenerator(preprocessing_function=preprocess_input)
+
+test_generator = val_datagen.flow_from_directory(
+    TEST_DATA_DIR,
+    target_size=(IMG_WIDTH, IMG_HEIGHT),
+    batch_size=BATCH_SIZE,
+    shuffle=False,
+    class_mode='categorical')
+
+model_final.evaluate(test_generator, steps=60 // BATCH_SIZE)
+```
+<img src="https://Kangpildo.github.io/assets/images/CNN-Model-Example-image5.png" alt="모델 성능 평가 결과">
+
 
 
 ## 학습 결과
