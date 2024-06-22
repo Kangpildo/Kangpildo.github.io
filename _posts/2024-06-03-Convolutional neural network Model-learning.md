@@ -132,9 +132,7 @@ model_final.evaluate(test_generator, steps=60 // BATCH_SIZE)
 <img src="https://Kangpildo.github.io/assets/images/CNN-Model-Example-image5.png" alt="모델 성능 평가 결과1">
 <img src="https://Kangpildo.github.io/assets/images/CNN-Model-Example-image4.png" alt="모델 성능 평가 결과2">
 
-
-
 ## 학습 결과
-- 훈련 모델 평가 결과: Validation에서 손실 함수가 감소하고 정확도가 증가함.
-- 전반적인 과정: Validation에서 손실 함수가 일정하게 감소하고 정확도가 증가함. 데이터 증강 기법을 적용하여 모델의 일반화 성능을 높임.
-- 과적합 방지: 훈련 데이터에 대한 정확도가 검증 데이터에 비해 낮은 현상을 보임.
+- 전반적으로 Validation에서 손실함수가 일정하게 감소하고, 정확도도 증가하고 있으므로 학습이 잘 진행되었다고 생각함
+- 하지만 몇몇 테스트 이미지에 있어서는 분류가 잘못되는 현상들이 있었으며, 그 대부분은 멀리서 찍어 얼굴 부분이 잘 나오지 않는 사진은 분류가 잘못되는 현상이 있었음
+- 양질의 데이터의 중요성을 다시한번 느끼게 되었음
